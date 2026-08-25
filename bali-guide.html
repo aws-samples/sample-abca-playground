@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bali: Indonesia's Island of the Gods — Playground</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sand:    #f5f0e8;
+      --cream:   #faf8f4;
+      --stone:   #e8e0d0;
+      --ink:     #1a1714;
+      --ash:     #6b6560;
+      --teal:    #2a7a6f;
+      --teal-lt: #d5ecea;
+      --coral:   #c9624a;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans:  'Inter', system-ui, sans-serif;
+      --max-w: 800px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    img { display: block; width: 100%; object-fit: cover; }
+    a   { color: inherit; text-decoration: none; }
+
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 40px;
+      background: rgba(250,248,244,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--stone);
+    }
+    .nav__logo {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+    }
+    .nav__back {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.2s;
+    }
+    .nav__back:hover { opacity: 0.7; }
+
+    /* ── Hero ── */
+    .guide-hero {
+      position: relative;
+      height: 60vh;
+      min-height: 420px;
+      overflow: hidden;
+    }
+    .guide-hero__img {
+      height: 100%;
+      object-fit: cover;
+    }
+    .guide-hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%);
+    }
+    .guide-hero__content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 48px 40px;
+      max-width: 860px;
+    }
+    .guide-hero__cat {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 12px;
+    }
+    .guide-hero__title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: white;
+      margin-bottom: 16px;
+    }
+    .guide-hero__meta {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ── Article ── */
+    .guide-body {
+      padding: 64px 0 96px;
+    }
+    .guide-body .container {
+      max-width: 720px;
+    }
+
+    .guide-intro {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--ash);
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--stone);
+    }
+
+    .guide-section {
+      margin-bottom: 48px;
+    }
+    .guide-section h2 {
+      font-family: var(--font-serif);
+      font-size: 1.9rem;
+      font-weight: 400;
+      margin-bottom: 18px;
+      color: var(--ink);
+    }
+    .guide-section p {
+      font-size: 0.97rem;
+      line-height: 1.8;
+      color: #3d3830;
+      margin-bottom: 16px;
+    }
+
+    .guide-tip {
+      background: var(--teal-lt);
+      border-left: 3px solid var(--teal);
+      padding: 20px 24px;
+      margin: 32px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .guide-tip__label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+    .guide-tip p {
+      font-size: 0.9rem;
+      color: #2a5750;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .guide-city {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 32px 0;
+    }
+    @media (max-width: 600px) {
+      .guide-city { grid-template-columns: 1fr; }
+    }
+
+    .city-card {
+      background: var(--sand);
+      padding: 24px;
+    }
+    .city-card__name {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .city-card__desc {
+      font-size: 0.85rem;
+      color: var(--ash);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .city-card__detail {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    .guide-img-block {
+      margin: 40px 0;
+      overflow: hidden;
+    }
+    .guide-img-block img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+    }
+    .guide-img-block figcaption {
+      font-size: 0.75rem;
+      color: var(--ash);
+      padding: 10px 0 0;
+      font-style: italic;
+    }
+
+    /* ── Back CTA ── */
+    .guide-back-cta {
+      padding: 64px 0;
+      background: var(--sand);
+      text-align: center;
+    }
+    .guide-back-cta h3 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .guide-back-cta p {
+      font-size: 0.9rem;
+      color: var(--ash);
+      margin-bottom: 28px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 28px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--teal);
+      color: var(--teal);
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn:hover { background: var(--teal); color: white; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Playground</a>
+    <a href="index.html#destinations" class="nav__back">← All destinations</a>
+  </nav>
+
+  <div class="guide-hero">
+    <img class="guide-hero__img" src="https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=1600&q=80" alt="Rice terraces and temple in Bali, Indonesia" />
+    <div class="guide-hero__overlay"></div>
+    <div class="guide-hero__content">
+      <p class="guide-hero__cat">Island &nbsp;·&nbsp; Indonesia</p>
+      <h1 class="guide-hero__title">Bali:<br/>Indonesia's island of the gods</h1>
+      <p class="guide-hero__meta">10 min read &nbsp;·&nbsp; Ten-day itinerary</p>
+    </div>
+  </div>
+
+  <section class="guide-body">
+    <div class="container">
+
+      <p class="guide-intro">
+        Volcanic peaks wrapped in mist, terraced rice fields that step down the hillsides like green staircases, and temples woven into daily life at every turn — Bali is a small island that holds an extraordinary amount of the world's attention, and rewards those who look past the crowds with a culture of rare depth and warmth.
+      </p>
+
+      <div class="guide-section">
+        <h2>Why Bali?</h2>
+        <p>Bali is the only Hindu-majority island in the world's largest Muslim nation, and that distinctiveness runs through everything. Daily offerings of flowers and incense (canang sari) appear on doorsteps and dashboards; village life turns around a calendar of temple festivals; and an artistic tradition of dance, carving, weaving, and painting has been refined over centuries. It is at once a beach destination, a spiritual retreat, and a living cultural landscape.</p>
+        <p>The island is compact but astonishingly varied. In a single day you can move from surf breaks on the southern peninsula to the cool highland temples around Bedugul, from Ubud's forested ridges to the black-sand volcanic coast of the northeast. Come with time and a willingness to slow down, and Bali reveals a rhythm quite unlike anywhere else in Southeast Asia.</p>
+      </div>
+
+      <div class="guide-tip">
+        <p class="guide-tip__label">Practical tip</p>
+        <p>Traffic in the south (Kuta, Seminyak, Canggu) is heavy and unpredictable, and journeys often take far longer than the map suggests. Hire a private driver for the day for longer excursions — it is inexpensive, comfortable, and far less stressful than renting a scooter if you are not an experienced rider. Base yourself in one area at a time rather than trying to cross the island daily.</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>The regions</h2>
+        <p>Bali rewards a region-by-region approach, each with its own character. Ubud, in the central foothills, is the cultural heart — temples, rice terraces, and craft villages. The southern beach towns range from the laid-back surf culture of Canggu to the polished restaurants of Seminyak. The Bukit Peninsula in the far south offers clifftop temples and world-class surf, while the quieter east and north reward travellers willing to venture beyond the crowds.</p>
+      </div>
+
+      <div class="guide-city">
+        <div class="city-card">
+          <h3 class="city-card__name">Ubud</h3>
+          <p class="city-card__desc">The island's cultural and spiritual centre, set among terraced rice fields and river gorges. Temples, traditional dance performances, the Monkey Forest, and a thriving scene of art, yoga, and slow food.</p>
+          <span class="city-card__detail">3 nights recommended</span>
+        </div>
+        <div class="city-card">
+          <h3 class="city-card__name">Seminyak</h3>
+          <p class="city-card__desc">Bali's most stylish beach town — designer boutiques, beach clubs, and some of the island's best restaurants, with long sunset-facing sands. Livelier and more polished than neighbouring Canggu.</p>
+          <span class="city-card__detail">2 nights recommended</span>
+        </div>
+        <div class="city-card">
+          <h3 class="city-card__name">Uluwatu</h3>
+          <p class="city-card__desc">On the Bukit Peninsula's limestone cliffs, home to the dramatic sea temple of Pura Luhur Uluwatu and legendary surf breaks. Come at dusk for the kecak fire dance above the Indian Ocean.</p>
+          <span class="city-card__detail">2 nights recommended</span>
+        </div>
+        <div class="city-card">
+          <h3 class="city-card__name">Nusa Penida</h3>
+          <p class="city-card__desc">A rugged island off the southeast coast, reached by fast boat, with cliff-framed beaches, snorkelling with manta rays, and some of Bali's most photographed viewpoints. Best as a day trip or overnight escape.</p>
+          <span class="city-card__detail">Day trip or 1 night</span>
+        </div>
+      </div>
+
+      <figure class="guide-img-block">
+        <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=1200&q=80" alt="Tegallalang rice terraces near Ubud, Bali" />
+        <figcaption>The Tegallalang rice terraces north of Ubud — carved by the centuries-old subak irrigation system, a UNESCO-recognised tradition of shared water management that shapes the island's landscape.</figcaption>
+      </figure>
+
+      <div class="guide-section">
+        <h2>When to go</h2>
+        <p>Bali has two seasons. The dry season (April to October) is the ideal time to visit — sunny days, lower humidity, and calm seas for diving and snorkelling. July and August are the busiest and most expensive months, coinciding with the European and Australian holidays; June and September offer similar weather with fewer crowds.</p>
+        <p>The wet season (November to March) brings warm, humid days punctuated by heavy afternoon downpours, but mornings are often clear and the landscape is at its greenest. Prices drop and the island feels quieter — a reasonable trade if you are flexible and don't mind an umbrella. Nyepi, the Balinese Day of Silence in March, is a remarkable experience: the entire island shuts down for 24 hours of reflection.</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>Where to stay</h2>
+        <p>Bali's accommodation is among the most varied and best value in the world. In Ubud, look for open-air villas overlooking the rice fields or a river gorge, many with private plunge pools. The southern beach towns offer everything from surf hostels in Canggu to design-led boutique hotels in Seminyak. For a splurge, the clifftop resorts of the Bukit Peninsula and the riverside sanctuaries above Ubud are world-renowned. Wherever you stay, a private villa with a pool is often no more expensive than a mid-range hotel room elsewhere in Asia.</p>
+      </div>
+
+      <div class="guide-tip">
+        <p class="guide-tip__label">Budget guide</p>
+        <p>Bali suits every budget. Backpackers staying in hostels and eating at local warungs can manage on €25–40 per day. A comfortable mid-range trip — a private villa, restaurant meals, and a driver for excursions — runs €70–150 per day. The island's luxury resorts and fine-dining scene can climb well beyond that, but even here prices are gentle by international standards.</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>Food &amp; drink</h2>
+        <p>Balinese cuisine is built on aromatic spice pastes (base gede), fresh coconut, and grilled meats and fish. Seek out babi guling (spit-roasted suckling pig), a ceremonial dish served at specialist warungs, and bebek betutu — duck slow-cooked for hours in banana leaf with a fragrant spice blend. Nasi campur, a plate of rice with a rotating selection of small dishes, is the everyday staple and the best way to sample a range of flavours in one sitting.</p>
+        <p>The island's warungs — small, family-run eateries — serve the most authentic and affordable food; the beach towns and Ubud also host an inventive café and health-food scene born of Bali's long draw for travellers. Finish with a fresh young coconut, or seek out kopi Bali, the strong, unfiltered local coffee grown in the volcanic highlands.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="guide-back-cta">
+    <div class="container">
+      <h3>Discover more guides</h3>
+      <p>From Kyoto's ancient temples to the Amalfi Coast's clifftop villages — there's always another journey waiting.</p>
+      <a href="index.html#guides" class="btn">Browse all guides</a>
+    </div>
+  </div>
+
+</body>
+</html>
