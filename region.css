@@ -1,0 +1,152 @@
+/* ==========================================================================
+   region.css — shared styles for the five region pages
+   europe-region.html · asia-region.html · americas-region.html
+   africa-region.html · oceania-region.html
+
+   Adding a destination? You do not need to touch this file. Every region
+   page carries its own destination list; this stylesheet is shared so that a
+   design change is one edit instead of five, and so the region pages stay
+   small enough that the editable list is obvious.
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --sand:    #f5f0e8;
+  --cream:   #faf8f4;
+  --stone:   #e8e0d0;
+  --ink:     #1a1714;
+  --ash:     #6b6560;
+  --teal:    #2a7a6f;
+  --teal-lt: #d5ecea;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans:  'Inter', system-ui, sans-serif;
+  --max-w: 1160px;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-sans); background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.6; }
+img { display: block; width: 100%; object-fit: cover; }
+a   { color: inherit; text-decoration: none; }
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+/* --- nav ---------------------------------------------------------------- */
+
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 40px;
+  background: rgba(250,248,244,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--stone);
+}
+.nav__logo { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 400; letter-spacing: 0.06em; color: var(--ink); }
+.nav__back { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); transition: opacity 0.2s; }
+.nav__back:hover { opacity: 0.7; }
+
+/* --- page hero ---------------------------------------------------------- */
+
+.page-hero {
+  padding: 80px 0 56px;
+  background: var(--sand);
+  border-bottom: 1px solid var(--stone);
+}
+.page-hero__eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; }
+.page-hero__title { font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; margin-bottom: 16px; }
+.page-hero__sub { font-size: 0.95rem; color: var(--ash); max-width: 480px; line-height: 1.75; }
+
+/* --- destination list --------------------------------------------------- */
+
+.region-body { padding: 64px 0 88px; }
+
+.dest-list { list-style: none; max-width: 720px; }
+
+.dest-row { border-bottom: 1px solid var(--stone); }
+.dest-row:first-child { border-top: 1px solid var(--stone); }
+
+.dest-row__link {
+  display: flex; align-items: center; gap: 22px;
+  padding: 16px 8px;
+  transition: background 0.25s;
+}
+.dest-row__link:hover { background: var(--sand); }
+.dest-row__link:hover .dest-row__name { color: var(--teal); }
+
+.dest-row__thumb {
+  flex: 0 0 auto;
+  width: 112px; height: 76px;
+  background: var(--stone);
+}
+.dest-row__text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.dest-row__name { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; line-height: 1.2; transition: color 0.25s; }
+.dest-row__meta { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ash); }
+
+/* --- empty region placeholder ------------------------------------------- */
+
+/* The placeholder disappears on its own as soon as the list holds one real
+   entry, which is any dest-row carrying a link. Editors adding the first
+   destination to an empty region therefore do not have to delete anything,
+   so two of them racing to add the first entry cannot conflict over the same
+   deleted lines. */
+.dest-list:has(.dest-row__link) .dest-row--empty { display: none; }
+
+.dest-row--empty { border: none; }
+.dest-row--empty:first-child { border-top: none; }
+.dest-row__empty-inner {
+  display: flex; align-items: center; gap: 22px;
+  padding: 24px 22px;
+  background: var(--teal-lt);
+  border: 1px dashed var(--teal);
+}
+.dest-row__thumb--empty {
+  flex: 0 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  width: 112px; height: 76px;
+  background: rgba(255,255,255,0.65);
+  border: 1px dashed rgba(42,122,111,0.45);
+  font-family: var(--font-serif); font-size: 2.2rem; font-weight: 300; color: var(--teal);
+}
+.dest-row--empty .dest-row__name { color: var(--teal); }
+.dest-row--empty .dest-row__meta {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0;
+  text-transform: none; line-height: 1.65; max-width: 44ch;
+}
+
+/* --- other regions strip ------------------------------------------------ */
+
+.region-switch { padding: 0 0 88px; }
+.region-switch__heading { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ash); margin-bottom: 16px; }
+.region-switch__links { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; }
+.region-switch__links a {
+  display: inline-block; padding: 9px 20px;
+  font-size: 0.82rem; letter-spacing: 0.04em;
+  border: 1px solid var(--stone); background: var(--sand);
+  transition: border-color 0.25s, color 0.25s;
+}
+.region-switch__links a:hover { border-color: var(--teal); color: var(--teal); }
+
+/* --- footer ------------------------------------------------------------- */
+
+footer { background: var(--ink); color: rgba(255,255,255,0.5); padding: 60px 0 36px; }
+.footer__grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; margin-bottom: 48px; }
+.footer__brand { font-family: var(--font-serif); font-size: 2rem; font-weight: 400; color: white; margin-bottom: 14px; letter-spacing: 0.04em; }
+.footer__tagline { font-size: 0.83rem; line-height: 1.7; max-width: 220px; }
+.footer__heading { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 18px; }
+.footer__links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer__links a { font-size: 0.88rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+.footer__links a:hover { color: white; }
+.footer__bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.75rem; }
+
+/* --- responsive --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .nav { padding: 18px 24px; }
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .dest-row__link { gap: 16px; padding: 14px 4px; }
+  .dest-row__thumb, .dest-row__thumb--empty { width: 84px; height: 62px; }
+  .dest-row__name { font-size: 1.3rem; }
+  .dest-row__empty-inner { gap: 16px; padding: 18px 16px; }
+  .footer__grid { grid-template-columns: 1fr; }
+}

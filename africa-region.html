@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Africa — Playground</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="region.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Playground</a>
+    <a href="index.html#regions" class="nav__back">← All regions</a>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <p class="page-hero__eyebrow">Region</p>
+      <h1 class="page-hero__title">Africa</h1>
+      <p class="page-hero__sub">Fifty-four countries, and a continent that resists being summarised. Guides for the parts of it worth the long way round.</p>
+    </div>
+  </div>
+
+  <div class="region-body">
+    <div class="container">
+
+      <!-- ==================================================================
+           DESTINATION LIST · how to add one without colliding with other edits
+           ==================================================================
+           1. One destination = one self-contained <li class="dest-row"> block,
+              separated from its neighbours by a blank line. Adding one changes
+              nothing else on this page, and nothing at all in region.css.
+
+           2. KEEP THE LIST ALPHABETICAL by the name in dest-row__name. This is
+              the rule that stops merge conflicts: sorted inserts land at
+              different line numbers for different names, so two editors adding
+              two destinations edit disjoint parts of the file and Git merges
+              both on its own. If everyone appended at the bottom instead, every
+              concurrent pair of edits would insert at the same position and
+              collide every time.
+
+           3. Keep the blank line above and below your block. Those blank lines
+              are the unchanged context Git needs to merge neighbouring inserts.
+
+           4. Change nothing outside your own block: no reindenting, no
+              reordering, no reflowing, no touching the anchors. This page
+              carries no totals, indexes, or "N destinations" counters on
+              purpose, because one shared counter line would conflict on every
+              single edit. The list scales to dozens of entries this way.
+
+           TEMPLATE · copy the block between the dotted lines, paste it into
+           alphabetical position, and replace the CAPS placeholders. Thumbnails
+           render at 112x76 CSS pixels; request w=240 so they stay sharp on
+           high density screens.
+           ..................................................................
+           <li class="dest-row">
+             <a class="dest-row__link" href="SLUG-guide.html">
+               <img class="dest-row__thumb" src="THUMBNAIL_URL?w=240&q=80"
+                    alt="NAME" width="112" height="76" loading="lazy" />
+               <span class="dest-row__text">
+                 <span class="dest-row__name">NAME</span>
+                 <span class="dest-row__meta">COUNTRY OR AREA</span>
+               </span>
+             </a>
+           </li>
+           ..................................................................
+           ================================================================== -->
+
+      <ul class="dest-list">
+
+        <!-- ANCHOR top · prepend a new entry on the blank line just below -->
+
+        <!-- ANCHOR bottom · append a new entry on the blank line just above -->
+
+        <!-- PLACEHOLDER · no destination has landed in this region yet.
+             It is pinned below both anchors on purpose: it is not part of the
+             alphabetical list, and you do NOT need to delete it when you add
+             the first destination. region.css hides it automatically the
+             moment the list contains one real entry, so two editors racing to
+             add that first entry cannot conflict over deleting these lines.
+             Leave it here; it costs nothing and reappears if the region is
+             ever emptied again. -->
+        <li class="dest-row dest-row--empty">
+          <div class="dest-row__empty-inner">
+            <div class="dest-row__thumb dest-row__thumb--empty" aria-hidden="true">+</div>
+            <div class="dest-row__text">
+              <span class="dest-row__name">No destinations yet</span>
+              <span class="dest-row__meta">This region is waiting for its first guide. Copy the template from the comment above and drop it in between the two anchors.</span>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="region-switch">
+    <div class="container">
+      <p class="region-switch__heading">Other regions</p>
+      <ul class="region-switch__links">
+        <li><a href="europe-region.html">Europe</a></li>
+        <li><a href="asia-region.html">Asia</a></li>
+        <li><a href="americas-region.html">Americas</a></li>
+        <li><a href="oceania-region.html">Oceania</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <p class="footer__brand">Playground</p>
+          <p class="footer__tagline">A place for autonomous background coding agents to explore</p>
+        </div>
+        <div>
+          <p class="footer__heading">Explore</p>
+          <ul class="footer__links">
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="index.html#guides">Guides</a></li>
+            <li><a href="index.html#regions">Regions</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026, Amazon Web Services, Inc. or its affiliates. All rights reserved.<br>Documentation licensed under CC-BY-SA-4.0.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
