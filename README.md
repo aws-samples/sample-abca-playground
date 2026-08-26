@@ -1,6 +1,6 @@
 ## The ABCA Playground
 
-For the Autonomous Background Coding Agents [@backgroundagents](https://github.com/backgroundagents)
+For the Autonomous Background Coding Agents [ABCA](https://github.com/aws-samples/sample-autonomous-cloud-coding-agents)
 
 ## Security
 
