@@ -1,0 +1,71 @@
+/* ==========================================================================
+   base.css — foundation shared by every region and guide page.
+
+   This is the site's single source of truth for design tokens (palette,
+   fonts), the CSS reset, and the chrome that every page wears: the sticky
+   nav, the .container wrapper, and the footer. A change here is one edit
+   that ripples to all region and guide pages, so preview index + one guide +
+   one region after touching it — the build only checks that HTML is
+   well-formed and CSS parses, not that the layout still looks right.
+
+   Page-type specifics live alongside this file: region.css and guide.css.
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --sand:    #f5f0e8;
+  --cream:   #faf8f4;
+  --stone:   #e8e0d0;
+  --ink:     #1a1714;
+  --ash:     #6b6560;
+  --teal:    #2a7a6f;
+  --teal-lt: #d5ecea;
+  --coral:   #c9624a;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans:  'Inter', system-ui, sans-serif;
+  /* Default page width; guide.css narrows this to 800px for article pages. */
+  --max-w: 1160px;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-sans); background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.6; }
+img { display: block; width: 100%; object-fit: cover; }
+a   { color: inherit; text-decoration: none; }
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+/* --- nav ---------------------------------------------------------------- */
+
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 40px;
+  background: rgba(250,248,244,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--stone);
+}
+.nav__logo { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 400; letter-spacing: 0.06em; color: var(--ink); }
+.nav__back { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); display: flex; align-items: center; gap: 6px; transition: opacity 0.2s; }
+.nav__back:hover { opacity: 0.7; }
+
+/* --- footer ------------------------------------------------------------- */
+
+footer { background: var(--ink); color: rgba(255,255,255,0.5); padding: 60px 0 36px; }
+.footer__grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; margin-bottom: 48px; }
+.footer__brand { font-family: var(--font-serif); font-size: 2rem; font-weight: 400; color: white; margin-bottom: 14px; letter-spacing: 0.04em; }
+.footer__tagline { font-size: 0.83rem; line-height: 1.7; max-width: 220px; }
+.footer__heading { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 18px; }
+.footer__links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer__links a { font-size: 0.88rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+.footer__links a:hover { color: white; }
+.footer__bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.75rem; }
+
+/* --- responsive --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .nav { padding: 18px 24px; }
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .footer__grid { grid-template-columns: 1fr; }
+}
