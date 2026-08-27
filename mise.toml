@@ -1,0 +1,24 @@
+# mise configuration for the ABCA Playground static site.
+# https://mise.jdx.dev
+#
+# This is a static HTML/CSS site deployed as-is to GitHub Pages, so there is
+# nothing to compile. "build" validates the HTML is well-formed and "lint"
+# runs style/quality checks over the HTML and CSS.
+
+[tools]
+node = "lts"
+# CLI linters, pinned by mise and installed on demand via the npm backend.
+"npm:htmlhint" = "latest"
+"npm:stylelint" = "latest"
+"npm:html-validate" = "latest"
+
+[tasks.lint]
+description = "Lint HTML and CSS"
+run = [
+  "htmlhint *.html",
+  "stylelint \"*.css\"",
+]
+
+[tasks.build]
+description = "Validate all HTML pages are well-formed"
+run = "html-validate *.html"
